@@ -1,0 +1,134 @@
+MAVVVAAAAA
+10 Introduction to Maven Plugin
+Step 1 — CMD open कर
+
+Windows search → cmd
+
+Step 2 — Project folder मध्ये जा
+
+Practical 9 मध्ये तयार केलेला project वापरायचा आहे.
+
+cd Desktop
+cd GitHub
+cd MyWebApp
+Step 3 — pom.xml open कर
+
+Project folder मध्ये file आहे:
+
+MyWebApp
+ └ pom.xml
+
+तो Notepad / Eclipse मध्ये open कर.
+
+Step 4 — Maven Compiler Plugin add कर
+
+pom.xml मध्ये <build> section add कर.
+
+<build>
+ <plugins>
+  <plugin>
+   <groupId>org.apache.maven.plugins</groupId>
+   <artifactId>maven-compiler-plugin</artifactId>
+   <version>2.0.2</version>
+   <configuration>
+    <source>1.4</source>
+    <target>1.4</target>
+   </configuration>
+  </plugin>
+ </plugins>
+</build>
+
+Save कर.
+
+Step 5 — Java Class create कर
+
+Folder path:
+
+MyWebApp
+ └ src
+    └ main
+       └ java
+          └ org
+             └ mywebapp
+                └ com
+
+तिथे file create कर:
+
+MyClass.java
+Step 6 — Java Code add कर
+package org.mywebapp.com;
+
+import java.util.*;
+
+public class MyClass {
+
+    public static void main(String[] args) {
+
+        List<String> stringList = new ArrayList<String>();
+
+        System.out.println("Maven Plugin Practical");
+
+    }
+
+}
+
+Save कर.
+
+Step 7 — Compile कर
+
+CMD मध्ये run कर:
+
+mvn compile
+Step 8 — Error येईल (Expected)
+
+Error असा दिसेल:
+
+source 1.4 does not support generics
+
+म्हणजे Java version 1.4 generics support करत नाही.
+
+Step 9 — pom.xml version change कर
+
+pom.xml मध्ये change कर:
+
+<source>1.5</source>
+<target>1.5</target>
+
+Save कर.
+
+Step 10 — पुन्हा compile कर
+mvn compile
+
+Output:
+
+BUILD SUCCESS
+Step 11 — Jetty Server Plugin add कर
+
+pom.xml मध्ये plugin add कर.
+
+<plugin>
+ <groupId>org.eclipse.jetty</groupId>
+ <artifactId>jetty-maven-plugin</artifactId>
+ <version>9.4.53.v20231009</version>
+</plugin>
+
+हा code <plugins> section मध्ये add कर.
+
+Step 12 — Server start कर
+
+CMD मध्ये run कर:
+
+mvn jetty:run
+
+जर port error आला तर:
+
+mvn jetty:run -Djetty.port=9090
+Step 13 — Browser open कर
+
+Browser मध्ये टाक:
+
+http://localhost:8080/MyWebApp
+
+किंवा
+
+http://localhost:9090/MyWebApp
