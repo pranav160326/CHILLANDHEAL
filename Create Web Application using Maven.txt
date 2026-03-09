@@ -1,0 +1,182 @@
+Create Web Application using Maven
+
+1.CMD open कर
+Windows search → **cmd**
+
+2. Java check कर
+```bash
+java -version
+```
+Expected:
+```
+java version "17"
+```
+3. Maven check कर
+
+```bash
+mvn -version
+```
+Expected:
+
+```
+Apache Maven 3.x
+```
+---
+
+4. Project folder create कर
+
+```bash
+cd Desktop
+mkdir GitHub
+cd GitHub
+```
+---
+5. Maven Web Application create कर
+
+```bash
+mvn archetype:generate -DgroupId=com.demo -DartifactId=MyWebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+```
+Project तयार होईल:
+```
+MyWebApp
+ ├ src
+ ├ pom.xml
+```
+---
+6. Project folder मध्ये जा
+
+```bash
+cd MyWebApp
+```
+
+---
+
+7.Compile कर
+
+```bash
+mvn compile
+```
+---
+
+8. WAR file build कर
+
+```bash
+mvn package
+```
+WAR file तयार होईल:
+```
+target/MyWebApp.war
+```
+---
+9. Tomcat start कर
+
+Tomcat folder मध्ये जा:
+
+```
+apache-tomcat/bin
+```
+
+Run:
+
+```bash
+startup.bat
+```
+
+10. Browser open कर
+
+```
+http://localhost:8080
+```
+
+Tomcat page दिसेल.
+
+---
+
+11. Manager App open कर
+
+Click:
+
+```
+Manager App
+```
+
+---
+12.जर login error आला
+
+File open कर:
+
+```
+apache-tomcat/conf/tomcat-users.xml
+```
+
+Add कर:
+
+```xml
+<role rolename="manager-gui"/>
+<user username="admin" password="12345" roles="manager-gui"/>
+```
+
+Tomcat restart:
+
+```
+shutdown.bat
+startup.bat
+```
+
+---
+
+13. Login कर
+
+```
+username : admin
+password : 12345
+```
+
+---
+
+14. WAR file deploy कर
+
+Page खाली scroll कर.
+
+```
+WAR file to deploy
+Choose File
+```
+
+Select:
+
+```
+MyWebApp/target/MyWebApp.war
+```
+
+Click:
+
+```
+Deploy
+```
+
+---
+
+#15. Application open कर
+
+Click:
+
+```
+/MyWebApp
+```
+
+किंवा browser मध्ये:
+
+```
+http://localhost:8080/MyWebApp
+```
+
+---
+
+# Final Output
+
+Page वर दिसेल:
+
+```
+Hello World!
+```
